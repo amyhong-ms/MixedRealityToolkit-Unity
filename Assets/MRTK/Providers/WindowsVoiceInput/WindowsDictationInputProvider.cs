@@ -35,7 +35,7 @@ namespace Microsoft.MixedReality.Toolkit.Windows.Input
             IMixedRealityInputSystem inputSystem,
             string name = null,
             uint priority = DefaultPriority,
-            BaseMixedRealityProfile profile = null) : this(inputSystem, name, priority, profile) 
+            BaseMixedRealityProfile profile = null) : this(inputSystem, name, priority, profile)
         {
             Registrar = registrar;
         }
@@ -79,6 +79,12 @@ namespace Microsoft.MixedReality.Toolkit.Windows.Input
         }
 
         private static readonly ProfilerMarker StartRecordingAsyncPerfMarker = new ProfilerMarker("[MRTK] WindowsDictationInputProvider.StartRecordingAsync");
+
+        /// <inheritdoc />
+        public AudioClip GetAudioClip()
+        {
+            return dictationAudioClip;
+        }
 
         /// <inheritdoc />
         public async Task StartRecordingAsync(GameObject listener = null, float initialSilenceTimeout = 5f, float autoSilenceTimeout = 20f, int recordingTime = 10, string micDeviceName = "")
